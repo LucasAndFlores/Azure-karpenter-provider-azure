@@ -1648,8 +1648,9 @@ spec:
                 type: object
                 x-kubernetes-validations:
                 - message: publisher, offer, sku and version must all be set
-                  rule: self.publisher != '' && self.offer != '' && self.sku != ''
-                    && self.version != ''
+                  rule: has(self.publisher) && has(self.offer) && has(self.sku) &&
+                    has(self.version) && self.publisher != ” && self.offer != ” &&
+                    self.sku != ” && self.version != ”
               maxPods:
                 description: |-
                   maxPods is an override for the maximum number of pods that can run on a worker node instance.
