@@ -156,19 +156,22 @@ type Security struct {
 }
 
 // MarketplaceImage selects an Azure Marketplace platform image.
-// +kubebuilder:validation:XValidation:message="publisher, offer, sku and version must all be set",rule="has(self.publisher) && has(self.offer) && has(self.sku) && has(self.version) && self.publisher != ” && self.offer != ” && self.sku != ” && self.version != ”"
 type MarketplaceImage struct {
 	// publisher is the name of the organization that published the image.
 	// +required
+	// +kubebuilder:validation:MinLength=1
 	Publisher *string `json:"publisher,omitempty"`
 	// offer is the product line of the image.
 	// +required
+	// +kubebuilder:validation:MinLength=1
 	Offer *string `json:"offer,omitempty"`
 	// sku is the specific image flavor.
 	// +required
+	// +kubebuilder:validation:MinLength=1
 	SKU *string `json:"sku,omitempty"`
 	// version is the image build version.
 	// +required
+	// +kubebuilder:validation:MinLength=1
 	Version *string `json:"version,omitempty"`
 }
 
